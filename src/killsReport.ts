@@ -41,7 +41,6 @@ const parseKillLine = (line: string) => {
 	}
 }
 
-// todo ranking
 const getKillData = async (filePath: string) => {
 	const fileStream = fs.createReadStream(filePath)
 	const rl = readline.createInterface({
@@ -65,12 +64,14 @@ const getKillData = async (filePath: string) => {
 	// After parsing is complete, compute player rankings
 	const playerRankings = computePlayerRankings()
 
-	// Add the player rankings to the existing output
-	const output = JSON.parse(fs.readFileSync('./kills_per_game.json', 'utf-8'))
-	output.player_rankings = playerRankings
+	// Create the output object
+	const output = {
+		games: games,
+		player_rankings: playerRankings,
+	}
 
-	// Write the updated output to the file
-	fs.writeFile('./kills_per_game.json', JSON.stringify(output, null, 2), (err) => {
+	// Write the output to the file
+	fs.writeFile('./output/Kills_per_game.json', JSON.stringify(output, null, 2), (err) => {
 		if (err) console.error('Error writing file: ', err)
 		else console.log('Successfully written to kills_per_game.json')
 	})
