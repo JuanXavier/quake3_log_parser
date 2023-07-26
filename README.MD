@@ -6,9 +6,9 @@ You are welcome to use a programming language that you are comfortable with.
 
 ## 2. Requirements
 
-Git
-A development environment
-Quake game [log](https://gist.github.com/cloudwalk-tests/be1b636e58abff14088c8b5309f575d8)
+-   Git
+-   A development environment
+-   Quake game [log](https://gist.github.com/cloudwalk-tests/be1b636e58abff14088c8b5309f575d8)
 
 ## 3. Tasks
 
@@ -45,10 +45,10 @@ The project should implement the following functionalities:
 "total_kills": 45,
 "players": ["Dono da bola", "Isgalamido", "Zeh"],
 "kills": {
-"Dono da bola": 5,
-"Isgalamido": 18,
-"Zeh": 20
-}
+	"Dono da bola": 5,
+	"Isgalamido": 18,
+	"Zeh": 20
+	}
 }
 ```
 
@@ -130,3 +130,19 @@ The evaluation will cover:
 -   Git skills (fragmentation, commit messages, etc)
 -   Documentation (source code, readme file, etc)
 -   Testability (testing framework, coverage, etc)
+
+-   task B) Generate a report of deaths grouped by death cause for each match. Example:
+-   "game-1": {
+    "kills_by_means": {
+    "MOD_SHOTGUN": 10,
+    "MOD_RAILGUN": 2,
+    "MOD_GAUNTLET": 1,
+    ...
+    }
+    }
+
+Run
+
+```
+npx ts-node src/logger.ts
+```
