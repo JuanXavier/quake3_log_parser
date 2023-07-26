@@ -54,9 +54,9 @@ The project should implement the following functionalities:
 
 #### Additional notes:
 
-When <world> kill a player, that player loses -1 kill score.
-Since <world> is not a player, it should not appear in the list of players or in the dictionary of kills.
-The counter total_kills includes player and world deaths.
+-   When <world> kill a player, that player loses -1 kill score.
+-   Since <world> is not a player, it should not appear in the list of players or in the dictionary of kills.
+-   The counter total_kills includes player and world deaths.
 
 ### 3.2. Report
 
@@ -145,4 +145,10 @@ Run
 
 ```
 npx ts-node src/logger.ts
+```
+
+Run
+
+```
+npx ts-node src/kills.ts
 ```

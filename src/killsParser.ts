@@ -34,7 +34,7 @@ const modTranslations: any = {
 }
 
 const writeToLogFile = (output: string) => {
-	fs.appendFile('kills_logs.log', output + '\n', (err) => {
+	fs.appendFile('./logs/kills_parsed.log', output + '\n', (err) => {
 		if (err) throw err
 	})
 }
