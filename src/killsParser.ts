@@ -1,40 +1,9 @@
 import * as fs from 'fs'
 import * as readline from 'readline'
-
-const modTranslations: any = {
-	MOD_UNKNOWN: 'Unknown kill',
-	MOD_SHOTGUN: 'Shotgun',
-	MOD_GAUNTLET: 'Gauntlet',
-	MOD_MACHINEGUN: 'Machine Gun',
-	MOD_GRENADE: 'Grenade',
-	MOD_GRENADE_SPLASH: 'Grenade Splash',
-	MOD_ROCKET: 'Rocket',
-	MOD_ROCKET_SPLASH: 'Rocket Splash',
-	MOD_PLASMA: 'Plasma Gun',
-	MOD_PLASMA_SPLASH: 'Plasma Splash',
-	MOD_RAILGUN: 'Railgun',
-	MOD_LIGHTNING: 'Lightning Gun',
-	MOD_BFG: 'BFG10k',
-	MOD_BFG_SPLASH: 'BFG Splash',
-	MOD_WATER: 'Drowned',
-	MOD_SLIME: 'Killed by slime',
-	MOD_LAVA: 'Killed by lava',
-	MOD_CRUSH: 'Crushed',
-	MOD_TELEFRAG: 'Telefragged',
-	MOD_FALLING: 'Falling to death',
-	MOD_SUICIDE: 'Suicide',
-	MOD_TARGET_LASER: 'Target laser',
-	MOD_TRIGGER_HURT: 'Killed by environment',
-	MOD_NAIL: 'Nailgun',
-	MOD_CHAINGUN: 'Chaingun',
-	MOD_PROXIMITY_MINE: 'Proximity Mine',
-	MOD_KAMIKAZE: 'Kamikaze',
-	MOD_JUICED: 'Juiced',
-	MOD_GRAPPLE: 'Grapple',
-}
+import { modTranslations } from './utils/modTranslations'
 
 const writeToLogFile = (output: string) => {
-	fs.appendFile('./output/Kills_parsed.json', output + '\n', (err) => {
+	fs.appendFile('./output/Kills_parsed.log', output + '\n', (err) => {
 		if (err) throw err
 	})
 }
