@@ -9,7 +9,7 @@ import { modTranslations } from './utils/modTranslations'
 let report: any = {}
 
 // This function reads the log file line by line and processes each line
-const parseLogFile = async (filePath: string) => {
+export const parseLogFile = async (filePath: string) => {
 	// Create a readable stream from the log file
 	const fileStream = fs.createReadStream(filePath)
 
@@ -27,14 +27,16 @@ const parseLogFile = async (filePath: string) => {
 		if (err) throw err
 		else console.log('Successfully written to output/Deaths_by_cause.json')
 	})
+	return report
 }
 
 // This function processes a line from the log file
-const parseKillLine = (line: string) => {
+export const parseKillLine = (line: string) => {
 	// This regular expression matches the format of a kill event in the log file
 	const killRegex = /(\d+:\d+) Kill: (\d+) (\d+) (\d+): (.+) killed (.+) by (.+)/
 	// Use the regular expression to extract information from the line
 	const match = line.match(killRegex)
+
 	// If the line matches the regular expression...
 	if (match !== null) {
 		const mod = modTranslations[match[7]]
