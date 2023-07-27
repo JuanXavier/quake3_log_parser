@@ -73,7 +73,7 @@ const getKillData = async (filePath: string) => {
 	// Write the output to the file
 	fs.writeFile('./output/Kills_per_game.json', JSON.stringify(output, null, 2), (err) => {
 		if (err) console.error('Error writing file: ', err)
-		else console.log('Successfully written to kills_per_game.json')
+		else console.log('Successfully written to output/Kills_per_game.json')
 	})
 }
 

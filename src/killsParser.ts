@@ -34,7 +34,7 @@ const modTranslations: any = {
 }
 
 const writeToLogFile = (output: string) => {
-	fs.appendFile('./output/Kills_parsed.log', output + '\n', (err) => {
+	fs.appendFile('./output/Kills_parsed.json', output + '\n', (err) => {
 		if (err) throw err
 	})
 }
@@ -46,6 +46,7 @@ const parseLogFile = async (filePath: string) => {
 		crlfDelay: Infinity,
 	})
 	for await (const line of rl) if (line.includes('Kill')) parseKillLine(line)
+	console.log('Successfully written to /output/Kills_parsed.log')
 }
 
 const parseKillLine = (line: string) => {

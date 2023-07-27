@@ -1,3 +1,25 @@
+## How to use
+
+1. To group the game data of each match, run the following command and this will create a file called "Killed_parsed.log" with the corresponding data:
+
+```
+npx ts-node src/killsParser.ts
+```
+
+2. To create a script that prints a report (grouped information) for each match and a player ranking, run the following command and this will create a file called "Kills_per_game.json" with the corresponding data:
+
+```
+npx ts-node src/killsPerGame.ts
+```
+
+3. To generate a report of deaths grouped by death cause for each match, run the following command and this will create a file called "Deaths_by_cause.json" with the corresponding data:
+
+```
+npx ts-node src/deathsByCause.ts
+```
+
+(These steps do not need to be sequential)
+
 ## 1. Introduction
 
 This [test](https://gist.github.com/cloudwalk-tests/704a555a0fe475ae0284ad9088e203f1#software-engineer-test) is intended for candidates applying to Software Engineering positions at CloudWalk.
@@ -130,25 +152,3 @@ The evaluation will cover:
 -   Git skills (fragmentation, commit messages, etc)
 -   Documentation (source code, readme file, etc)
 -   Testability (testing framework, coverage, etc)
-
--   task B) Generate a report of deaths grouped by death cause for each match. Example:
--   "game-1": {
-    "kills_by_means": {
-    "MOD_SHOTGUN": 10,
-    "MOD_RAILGUN": 2,
-    "MOD_GAUNTLET": 1,
-    ...
-    }
-    }
-
-Run
-
-```
-npx ts-node src/logger.ts
-```
-
-Run
-
-```
-npx ts-node src/kills.ts
-```
