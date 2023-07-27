@@ -16,19 +16,15 @@ const writeToLogFile = (output: string) => {
 const parseLogFile = async (filePath: string) => {
 	// Create a readable stream from the log file
 	const fileStream = fs.createReadStream(filePath)
+
 	// Create a readline interface to read the stream line by line
 	const rl = readline.createInterface({
 		input: fileStream,
 		crlfDelay: Infinity,
 	})
 
-	// For each line in the log file...
-	for await (const line of rl) {
-		// If the line contains a kill event, process it
-		if (line.includes('Kill')) {
-			parseKillLine(line)
-		}
-	}
+	// For each line in the log file, // If the line contains a kill event, process it
+	for await (const line of rl) if (line.includes('Kill')) parseKillLine(line)
 
 	// After all lines have been processed, log a success message
 	console.log('Successfully written to /output/Kills_parsed.log')
