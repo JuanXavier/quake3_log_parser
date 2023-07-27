@@ -4,11 +4,12 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"all": "mocha -r ts-node/register 'src/**/*.ts'",
-		"test": "mocha -r ts-node/register 'test/KillsPerGame.test.ts'"
+		"all": "npx ts-node src/killsParser.ts && npx ts-node src/killsPerGame.ts &&  npx ts-node src/deathsByCause.ts ",
+		"test": "mocha -r ts-node/register 'test/KillsPerGame.test.ts'",
+		"killsPerGame": "mocha -r ts-node/register test/KillsPerGame.test.ts"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Juan Xavier Valverde",
 	"license": "ISC",
 	"devDependencies": {
 		"@types/chai": "^4.3.5",

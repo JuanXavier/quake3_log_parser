@@ -20,9 +20,22 @@ npx ts-node src/deathsByCause.ts
 
 (These steps do not need to be sequential)
 
+To run all three scripts at once, run:
+
 ```
 npm run all
 ```
+
+### Testing
+
+To run a single test for killsPerGame, run
+
+````
+npm run killsPerGame
+```
+
+
+
 
 ## 1. Introduction
 
@@ -52,15 +65,19 @@ The project should implement the following functionalities:
 
 **Example**
 
-```
+````
+
 21:42 Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT
+
 ```
 
 **_The player "Isgalamido" died because he was wounded and fell from a height enough to kill him._**
 
 ```
+
 2:22 Kill: 3 2 10: Isgalamido killed Dono da Bola by MOD_RAILGUN
-```
+
+````
 
 **_The player "Isgalamido" killed the player "Dono da Bola" using the Railgun weapon._**
 
@@ -76,7 +93,7 @@ The project should implement the following functionalities:
 	"Zeh": 20
 	}
 }
-```
+````
 
 #### Additional notes:
 
