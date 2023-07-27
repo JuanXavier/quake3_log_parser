@@ -6,14 +6,14 @@ import * as readline from 'readline'
 import { modTranslations } from './utils/modTranslations'
 
 // This function appends a line to the output log file
-const writeToLogFile = (output: string) => {
+export const writeToLogFile = (output: string) => {
 	fs.appendFile('./output/Kills_parsed.log', output + '\n', (err) => {
 		if (err) throw err // If there's an error, throw it
 	})
 }
 
 // This function reads the log file line by line and processes each line
-const parseLogFile = async (filePath: string) => {
+export const parseLogFile = async (filePath: string) => {
 	// Create a readable stream from the log file
 	const fileStream = fs.createReadStream(filePath)
 
@@ -31,7 +31,7 @@ const parseLogFile = async (filePath: string) => {
 }
 
 // This function processes a line from the log file
-const parseKillLine = (line: string) => {
+export const parseKillLine = (line: string) => {
 	// This regular expression matches the format of a kill event in the log file
 	const killRegex = /(\d+:\d+) Kill: (\d+) (\d+) (\d+): (.+) killed (.+) by (.+)/
 	// Use the regular expression to extract information from the line
@@ -57,6 +57,7 @@ const parseKillLine = (line: string) => {
 
 		// Write the string to the output log file
 		writeToLogFile(output)
+		return output
 	} else {
 		return null // If the line doesn't match the regular expression, return null
 	}

@@ -5,8 +5,10 @@
 	"main": "index.js",
 	"scripts": {
 		"all": "npx ts-node src/killsParser.ts && npx ts-node src/killsPerGame.ts &&  npx ts-node src/deathsByCause.ts ",
-		"test": "mocha -r ts-node/register 'test/KillsPerGame.test.ts'",
-		"killsPerGame": "mocha -r ts-node/register test/KillsPerGame.test.ts"
+		"test": "mocha -r ts-node/register 'test/KillsPerGame.test.ts' && mocha -r ts-node/register test/killsParser.test.ts && mocha -r ts-node/register test/deathsByCause.test.ts",
+		"killsPerGame": "mocha -r ts-node/register test/killsPerGame.test.ts",
+		"killsParser": "mocha -r ts-node/register test/killsParser.test.ts",
+		"deathsByCause": "mocha -r ts-node/register test/deathsByCause.test.ts"
 	},
 	"keywords": [],
 	"author": "Juan Xavier Valverde",

@@ -28,14 +28,12 @@ npm run all
 
 ### Testing
 
-To run a single test for killsPerGame, run
+To run all the tests for the project, run:
 
-````
-npm run killsPerGame
 ```
+npm test
 
-
-
+```
 
 ## 1. Introduction
 
@@ -65,7 +63,7 @@ The project should implement the following functionalities:
 
 **Example**
 
-````
+```
 
 21:42 Kill: 1022 2 22: <world> killed Isgalamido by MOD_TRIGGER_HURT
 
@@ -77,7 +75,7 @@ The project should implement the following functionalities:
 
 2:22 Kill: 3 2 10: Isgalamido killed Dono da Bola by MOD_RAILGUN
 
-````
+```
 
 **_The player "Isgalamido" killed the player "Dono da Bola" using the Railgun weapon._**
 
@@ -93,7 +91,7 @@ The project should implement the following functionalities:
 	"Zeh": 20
 	}
 }
-````
+```
 
 #### Additional notes:
 
