@@ -4,11 +4,11 @@ import * as fs from 'fs'
 import * as readline from 'readline'
 
 // Initialize variables to store the current game number and game data
-let currentGame: any = 0
-let games: any = {}
+export let currentGame: any = 0
+export let games: any = {}
 
 // This function extracts a player's name from a line in the log file
-const parsePlayerName = (line: any) => {
+export const parsePlayerName = (line: any) => {
 	const regex = /n\\([^\\]+)/
 	const match = line.match(regex)
 
@@ -19,13 +19,13 @@ const parsePlayerName = (line: any) => {
 		if (!games[`game_${currentGame}`].players.includes(playerName) && playerName != null) {
 			games[`game_${currentGame}`].players.push(playerName)
 		}
-		return match
+		return playerName
 	}
 	return null
 }
 
 // This function processes a line from the log file that contains a kill event
-const parseKillLine = (line: string) => {
+export const parseKillLine = (line: string) => {
 	const killRegex = /(\d+:\d+) Kill: (\d+) (\d+) (\d+): (.+) killed (.+) by (.+)/
 	const match = line.match(killRegex)
 
@@ -47,14 +47,16 @@ const parseKillLine = (line: string) => {
 		// Update the kill count for the killer or victim
 		if (killer !== '<world>') {
 			games[`game_${currentGame}`].kills[killer] = (games[`game_${currentGame}`].kills[killer] || 0) + 1
+			return 1
 		} else {
 			games[`game_${currentGame}`].kills[victim] = (games[`game_${currentGame}`].kills[victim] || 0) - 1
+			return -1
 		}
 	}
 }
 
 // This function reads the log file line by line and processes each line
-const getKillData = async (filePath: string) => {
+export const getKillData = async (filePath: string) => {
 	const fileStream = fs.createReadStream(filePath)
 	const rl = readline.createInterface({
 		input: fileStream,
@@ -63,11 +65,9 @@ const getKillData = async (filePath: string) => {
 
 	// For each line in the log file...
 	for await (const line of rl) {
-		if (line.includes('ClientUserinfoChanged')) {
-			parsePlayerName(line)
-		} else if (line.includes('Kill')) {
-			parseKillLine(line)
-		} else if (line.includes('InitGame')) {
+		if (line.includes('ClientUserinfoChanged')) parsePlayerName(line)
+		else if (line.includes('Kill')) parseKillLine(line)
+		else if (line.includes('InitGame')) {
 			// If a new game starts, increment the current game number and initialize its data
 			currentGame++
 			games[`game_${currentGame}`] = {
@@ -89,16 +89,13 @@ const getKillData = async (filePath: string) => {
 
 	// Write the output to a JSON file
 	fs.writeFile('./output/Kills_per_game.json', JSON.stringify(output, null, 2), (err) => {
-		if (err) {
-			console.error('Error writing file: ', err)
-		} else {
-			console.log('Successfully written to output/Kills_per_game.json')
-		}
+		if (err) console.error('Error writing file: ', err)
+		else console.log('Successfully written to output/Kills_per_game.json')
 	})
 }
 
 // This function computes player rankings based on kill counts
-const computePlayerRankings = () => {
+export const computePlayerRankings = () => {
 	const playerRankings: any = {}
 
 	// For each game...

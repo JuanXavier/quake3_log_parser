@@ -20,6 +20,10 @@ npx ts-node src/deathsByCause.ts
 
 (These steps do not need to be sequential)
 
+```
+npm run all
+```
+
 ## 1. Introduction
 
 This [test](https://gist.github.com/cloudwalk-tests/704a555a0fe475ae0284ad9088e203f1#software-engineer-test) is intended for candidates applying to Software Engineering positions at CloudWalk.

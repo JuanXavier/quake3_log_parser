@@ -27,7 +27,7 @@ const parseLogFile = async (filePath: string) => {
 	for await (const line of rl) if (line.includes('Kill')) parseKillLine(line)
 
 	// After all lines have been processed, log a success message
-	console.log('Successfully written to /output/Kills_parsed.log')
+	console.log('Successfully written to output/Kills_parsed.log')
 }
 
 // This function processes a line from the log file
